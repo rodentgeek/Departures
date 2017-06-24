@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Terminal View</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/terminal.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="/js/angular_ajax.js"></script>
+
+<body>
+
+	<div class="container-fixed" ng-app="myApp" ng-controller="myCtrl">
+
+		<table class="header">
+			<tr>
+				<td class="header1"><h1>Departures <i class="fa fa-plane" aria-hidden="true"></i></h1></td>
+				<td class="header2">Hong Kong International Airport<br>Terminal 1</td>
+			</tr>
+		</table>
+
+		<!-- 	The table data is managed by Angular -->
+
+		<table class="table">
+			<tr>
+				<th>Depart</th>
+				<th></th>
+				<th>Flight #</th>
+				<th>Destination</th>
+				<th>Gate</th>
+				<th>Status</th>
+			</tr>
+
+			<tr ng-repeat="x in flights | orderBy: 'departTime'">
+				<td>{{x.departTime}}</td>
+				<td><img src="images/{{x.carrier}}.gif"></td>
+				<td>{{x.flightNumCombined}}</td>
+				<td>{{x.destination}}</td>
+				<td>{{x.gate}}</td>
+				<td class="{{x.status}}">{{x.status_shown}}</td>
+			</tr>
+
+		</table>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

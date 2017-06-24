@@ -1,0 +1,116 @@
+<% include partials/header %>
+
+<form action="/flights" method="POST" id="theForm">
+
+  <h1>Add new flight</h1>
+
+  <a href="/flights" class="btn btn-info return">Return to Control Panel without adding</a>
+
+  <div class="form-group">
+    <label for="flight[carrier]">Airline prefix</label>
+    <select name="flight[carrier]" class="form-control" id="carrier">
+      <option value="XX">Please select from this dropdown</option>
+      <option value="5J">5J - Cebu Pacific Air</option>
+      <option value="AF">AF - Air France</option>
+      <option value="AI">AI - Air India</option>
+      <option value="AA">AA - American Airlines</option>
+      <option value="BA">BA - British Airways</option>
+      <option value="CI">CI - China Airlines</option>
+      <option value="CX">CX - Cathay Pacific Air</option>
+      <option value="DL">DL - Delta Airlines</option>
+      <option value="EK">EK - Emirates</option>
+      <option value="HX">HX - Hong Kong Airlines</option>
+      <option value="JL">JL - Japan Airlines</option>
+      <option value="KE">KE - Korean Air</option>
+      <option value="LH">LH - Lufthansa</option>
+      <option value="MH">MH - Malaysia Airlines</option>
+      <option value="NH">NH - Air Nippon Airlines</option>
+      <option value="PR">PR - Philippine Airlines</option>
+      <option value="QF">QF - Qantas </option>
+      <option value="SQ">SQ - Singapore Airlines</option>
+      <option value="TG">TG - Thai Airways</option>
+      <option value="UA">UA - United Airlines</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="flight[flightNum]">Flight number suffix</label>
+    <input type="text" name="flight[flightNum]" class="form-control" placeholder="Four digits maximum" id="flightNum">
+  </div>
+
+  <div class="form-group">
+    <label for="flight[departTime]">Departure time</label>
+    <input type="text" name="flight[departTime]" class="form-control" placeholder="Four-digit military format without colon (0000 to 2359)" id="departTime">
+  </div>
+
+  <div class="form-group">
+    <label for="flight[destination]">Destination</label>
+    <select name="flight[destination]" class="form-control" id="destination">
+      <option value="XX">Please select from this dropdown</option>
+      <option>Abu Dhabi</option>      
+      <option>Bali</option>
+      <option>Bangkok</option>
+      <option>Beijing</option>
+      <option>Boracay</option>
+      <option>Busan</option>
+      <option>Cebu</option> 
+      <option>Chicago</option>
+      <option>Columbo</option>
+      <option>Doha</option>
+      <option>Dubai</option>
+      <option>Ho Chi Minh City</option>
+      <option>Frankfurt</option>
+      <option>Honolulu</option>
+      <option>Jakarta</option>
+      <option>Johannesburg</option>
+      <option>Karachi</option>
+      <option>Kuala Lumpur</option>
+      <option>London</option>
+      <option>Los Angeles</option>
+      <option>Manila</option>
+      <option>Moscow</option>
+      <option>Mumbai</option>
+      <option>New Dehli</option>
+      <option>New York</option>
+      <option>Osaka</option>
+      <option>Paris</option>
+      <option>Perth</option>
+      <option>Phnom Penh</option>
+      <option>Phuket</option>
+      <option>Pyongyang</option>
+      <option>Riyadh</option>
+      <option>Rome</option>
+      <option>San Francisco</option>
+      <option>Seoul</option>
+      <option>Shanghai</option>
+      <option>Siem Reap</option>
+      <option>Singapore</option>
+      <option>Sydney</option>
+      <option>Taipei</option>
+      <option>Tel Aviv</option>
+      <option>Tehran</option>
+      <option>Tokyo</option>
+      <option>Ulaanbaatar</option>
+      <option>Vientiane</option>
+      <option>Yangon</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="flight[gate]">Gate</label>
+    <input type="text" name="flight[gate]" class="form-control" placeholder="Three characters max" id="gate">
+  </div>
+
+  <div class="form-group">
+    <% include partials/reuseFormElement %> <!-- Reusing form element used in two places -->
+  </div>
+
+  <p id="theMsg"></p> <!-- InnerHTML programatically populated -->
+
+  <input type="button" value="Submit" id="submitbutton" class="btn btn-default btn-lg">
+
+</form>
+
+<script type="text/javascript" src="/js/formValidate.js"></script>
+
+<% include partials/footer %>

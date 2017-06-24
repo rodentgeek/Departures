@@ -1,0 +1,27 @@
+<script>
+
+	// Programatically populate Edit form with existing data
+
+	varText = "Edit <%= flight['carrier'] + flight['flightNum'] %> to <%= flight['destination']%>";
+	document.querySelector("h1").innerHTML = varText;
+
+	document.querySelector("#<%= flight['status'] %>").checked = true;
+
+	document.querySelector("#departTime").value = "<%= flight['departTime'] %>";
+	document.querySelector("#gate").value = "<%= flight['gate'] %>";
+	document.querySelector("#flightNum").value = "<%= flight['flightNum'] %>";
+	document.querySelector("#carrier").value = "<%= flight['carrier'] %>";
+	document.querySelector("#destination").value = "<%= flight['destination'] %>";
+
+
+<%
+	otherFields = ["departTime", "gate", "flightNum", "carrier","destination"];
+	otherFields.forEach(function(val){
+%>
+	document.querySelector("#<%= val %>").value = "<%= flight[val] %>";
+
+<%
+	});
+%>
+
+</script>

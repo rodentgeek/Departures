@@ -1,0 +1,45 @@
+<% include partials/header %>
+
+<form action="/flights/<%= flight['_id'] %>?_method=PUT" method="POST" id="theForm">
+
+  <h1></h1> <!-- InnerHTML programatically populated -->
+
+  <a href="/flights" class="btn btn-info return">Return to Control Panel without editing</a>
+
+  <div class="form-group">
+    <label for="flight[departTime]">Departure time</label>
+		<input type="text" name="flight[departTime]" placeholder="Depart Time" id="departTime" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="flight[gate]">Gate</label>
+    <input type="text" name="flight[gate]" class="form-control" id="gate">
+  </div>
+
+  <div class="form-group">
+    <% include partials/reuseFormElement %> <!-- Reusing form element used in two places -->
+  </div>
+
+	<input type="hidden" id="flightNum" />
+	<input type="hidden" id="carrier" />
+	<input type="hidden" id="destination" />
+
+  <p id="theMsg"></p> <!-- InnerHTML programatically populated -->
+
+	<input type="button" value="Submit" id="submitbutton" class="btn btn-default btn-lg">
+  <input type="button" value="Delete" class="btn btn-danger btn-lg" onclick="document.querySelector('.confirm-delete').setAttribute('class', '');">
+
+</form>
+
+<br/>
+
+<!-- Clicking on the Delete button will make the form below appear.  The form is initially hidden with a CSS display class. -->
+
+<form action="/flights/<%= flight['_id'] %>?_method=DELETE" method="POST" class="confirm-delete">
+	<button class="btn btn-danger btn-lg">Yes, I'm sure I want to delete this flight</button>
+</form>
+
+<script type="text/javascript" src="/js/formValidate.js"></script>
+
+<% include partials/populateEditForm %>
+<% include partials/footer %>

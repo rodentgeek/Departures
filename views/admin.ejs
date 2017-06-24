@@ -1,0 +1,39 @@
+<% include partials/header %>
+
+<script type="text/javascript" src="/js/angular_ajax.js"></script>
+
+	<div class="alert alert-warning">
+	 This is a control panel that controls the Terminal View (red link in the navigation bar).&nbsp; The Terminal View is a public departure screen for a fictitious airport.
+	 <br><br>
+	 You can modify the database by adding, editing and deleting the flights below.&nbsp; FYI, all changes to the database will be reversed if the root URL ("/") is accessed.&nbsp; This is to ensure new visitors see the original version of this website.
+	</div>
+
+	<p><span class="glyphicon glyphicon-log-in"></span>&nbsp; Blue table headers are clickable as a sorting tool</p>
+
+<!-- 	The table data is managed by Angular -->
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+
+		<table class="table table-striped">
+			<tr>
+				<th><a ng-click="reSort('departTime')">Depart Time</a></th>
+				<th><a ng-click="reSort('flightNumCombined')">Flight #</a></th>
+				<th><a ng-click="reSort('destination')">Destination</a></th>
+				<th><a ng-click="reSort('gate')">Gate</a></th>
+				<th><a ng-click="reSort('status')">Status</a></th>
+				<th></th>
+			</tr>
+
+			<tr ng-repeat="x in flights | orderBy: sortField : sortDir" id="bodyTable">
+				<td ng-bind="x.departTime"></td>
+				<td ng-bind="x.flightNumCombined"></td>
+				<td ng-bind="x.destination"></td>
+				<td ng-bind="x.gate"></td>
+				<td ng-bind="x.status"></td>
+				<td><a href="flights/{{x._id}}/edit"><span class="glyphicon glyphicon-log-in"></span> Edit</a></td>
+			</tr>
+		</table>
+
+	</div>
+
+<% include partials/footer %>
