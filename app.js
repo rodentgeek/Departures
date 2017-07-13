@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Connect the database.  Model and Schema are set in the Flights dependency
 
-mongoose.connect(process.env.DB);
-/*mongoose.connect("mongodb://127.0.0.1:27017/departures");*/
+/*mongoose.connect(process.env.DB);*/
+mongoose.connect("mongodb://127.0.0.1:27017/departures");
 
 // The Routes
 
